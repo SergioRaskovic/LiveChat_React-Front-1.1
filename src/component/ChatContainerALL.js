@@ -14,10 +14,9 @@ class ChatContainerALL extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
-	      toggle: true,
+	      toggle: true
 	    }
 	  }
-
 
 	handleToggle = () => {
 		if(!this.state.toggle){
@@ -31,12 +30,13 @@ class ChatContainerALL extends Component {
 		})
 	}
 	}
+
+
 	render() {	
 		return(
-
 			<div className="wrapper">
 					<div className='rows'>
-						<aside className="aside aside-1"><Sidebar Hide={this.handleToggle}/> </aside>
+						<aside className="aside aside-1"><Sidebar EditProfile={this.handelEditProfile} Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
 	  					<aside className="aside aside-2" >Toggle private messages</aside> : null}
   					</div>

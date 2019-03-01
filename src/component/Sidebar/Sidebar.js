@@ -8,13 +8,45 @@ import travelicon from './travelicon.png';
 import PrivateMessages from './PrivateMessages';
 import logouticon from './logouticon.png';
 import '../ChatContainerALL.css';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
+import {PrivateRoute} from '../PrivateRoute';
+import EditProfile from '../EditProfile';
+import { withRouter } from 'react-router-dom';
+
+
 
 
 class Sidebar extends Component {
-	
+	constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false,
+      editProfile: false,
+      logout: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+
+  handleEditProfile = () => {
+  	this.setState({ editProfile: true }, () => this.props.history.push('/EditProfile'))
+  }
+
+  handleLogout = () => {
+  	this.setState({ logout: true }, () => this.props.history.push('/'))
+  }
+
+
 
 render() {
-	return(
+	return(		
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
@@ -31,9 +63,15 @@ render() {
 					<Button className="Buttoni" color="danger"><img className='imgbuttoni' alt='techicon' src={techicon}/>
 						TECH
 					</Button>
-					<Button className="Buttoni" color="primary"><img className='imgbuttoni' alt='logout' src={logouticon}/>
-					LOGOUT
-					</Button>
+					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" color="primary">
+						  <DropdownToggle caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
+						    SETTINGS
+						  </DropdownToggle>
+						  <DropdownMenu>
+						    <DropdownItem onClick={this.hnadleEditProfile} >Edit profile</DropdownItem>
+						    <DropdownItem onClick={this.handleLogout}>LOGOUT</DropdownItem>
+						  </DropdownMenu>
+						</ButtonDropdown>
 				</ButtonGroup>
 			</div>
 	    </div>	
@@ -42,4 +80,4 @@ render() {
 }
   
 
-export default Sidebar;
+export default withRouter(Sidebar);
