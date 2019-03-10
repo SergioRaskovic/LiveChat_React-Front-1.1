@@ -12,7 +12,7 @@ class SendingMessages extends Component {
 		super(props);
 		this.state = {
 			text: "",
-			createdAt: "",
+			
 			//UserId:
 		}
 	}
@@ -27,7 +27,7 @@ class SendingMessages extends Component {
 				text: this.state.text, 
 				chatroomId: this.props.chatroomId,
 				token: token,
-				createdAt: this.state.createdAt
+				
 				}
 		});
 		this.setState({ text: "" })
@@ -85,10 +85,10 @@ class SendingMessages extends Component {
 }
 
 const addMessageMutation= gql` 
-  mutation addMessage($text: String!, $chatroomId: String!, $token: String!, $createdAt: String!) {
-    addMessage(text: $text, chatroomId: $chatroomId, token: $token, createdAt: $createdAt) {
+  mutation addMessage($text: String!, $chatroomId: String!, $token: String!) {
+    addMessage(text: $text, chatroomId: $chatroomId, token: $token ) {
 		text
-		createdAt
+		
     }
   }
 `;
