@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from 'reactstrap';
-import {Form, FormGroup, Label, Input} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import './Registration.css';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
@@ -37,7 +36,8 @@ class Registration extends Component {
   		confirmPasswordValid = "Password and confirm password don't match!";
   	}
  	if (usernameValid || passwordValid || confirmPasswordValid || emailValid) {   //setstejtanje upozorenja
- 		this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
+     this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
+     return false;
  	}
   else {
     this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
@@ -62,11 +62,11 @@ class Registration extends Component {
           password : this.state.password
         },
       });
-      if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}') {
+      if (token.data.register === "Username already taken") {
         var usernameValid = 'Username already taken';
         this.setState({ usernameValid })
       }
-      else if (JSON.stringify(token) === '{"data":{"register":"Email already exists"}}') {
+      else if (token.data.register === "Email already exists") {
         var emailValid = 'Email already exists';
         this.setState({ emailValid })
       }
@@ -74,7 +74,7 @@ class Registration extends Component {
         localStorage.setItem('jwt', JSON.stringify(token));
         this.props.trigerChat()
       }
-    }};
+    }}
 
   render() {
     return (     
@@ -133,10 +133,6 @@ class Registration extends Component {
             </Form>
 
           </div>
-        
-
-      /*</div>
-      </div>*/
     );
   }
 }

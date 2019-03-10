@@ -4,7 +4,16 @@ import Particles from 'react-particles-js';
 import Login from '../Login';
 import Registration from '../Registration';
 import Logo from '../Logo/Logo.js';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, ButtonGroup  } from 'reactstrap';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+import '../Login.css';
+
+const validToken = gql`
+  mutation validToken($token: String!) {
+    validToken(token : $token)
+  }
+`;
 
 class HomePage extends Component {
   constructor(props) {
@@ -33,6 +42,31 @@ class HomePage extends Component {
     this.setState({ redirect: true }, () => this.props.history.push('/ChatContainerALL'))
   }
 
+  handleResponse = async () => {
+  const check_token = localStorage.getItem('jwt')
+  if (check_token) {
+    const token = JSON.parse(check_token)
+    const response = await this.props.mutate({
+       variables: {
+        token: token.data.register || token.data.login || token.data.logout
+        }
+      });
+      if(response.data.validToken === "True"){
+          this.handleTriger();
+      }
+      else {
+        this.setState({ redirect: false }, () => this.props.history.push('/'))
+      }
+  }
+  else {
+    this.setState({ redirect: false }, () => this.props.history.push('/'))
+  }
+}
+
+  componentWillMount(){     //ili DidMount?
+    this.handleResponse();
+  }
+
   render() {
     const particleOptions= {
       particles: {
@@ -58,8 +92,10 @@ class HomePage extends Component {
             <Col xs="6" >
               <Row className="red">
                 <Col>
-                  <Button id='login' onClick={this.handeLog}>Login</Button>
-                  <Button id='registration' onClick={this.handleReg}>Registration</Button>
+                  <ButtonGroup md= 'auto' className="positionOfButtons"> {/*css is in login.css*/}
+                  <Button  id='login' onClick={this.handeLog}>Login</Button>
+                  <Button  id='registration' onClick={this.handleReg}>Register</Button>
+                  </ButtonGroup>
                   {this.state.login ? <Login trigerChat={this.handleTriger} /> : null}
                   {this.state.registration ? <Registration trigerChat={this.handleTriger} /> : null}
                 </Col>
@@ -72,4 +108,4 @@ class HomePage extends Component {
   }
 }
 
-export default withRouter(HomePage);
+export default graphql(validToken) (withRouter(HomePage));

@@ -1,0 +1,51 @@
+
+
+#formShape{
+	padding-top: 5vh;
+	height:  70vh;
+	width: auto;
+	background-color: rgba(69, 162, 158, 0.8);
+	display: flex;
+	justify-content: center;
+	margin-top: 10vh;
+	font-weight: bold;
+	color: white;
+	margin-left: auto;
+    margin-right: auto;
+	/*border-radius: 10%;*/
+}
+
+#button{
+	background-color: transparent;
+	border: 2px solid #1F2833;
+	
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+	
+}
+#button:hover {
+	background-color: #1F2833;
+	color: #66FCF1;
+	border: 2px solid #66FCF1;
+
+}
+ .backButton{
+ 	background-color: transparent;
+	border: 2px solid #45A29E;	
+	color: #66FCF1;
+	font-weight: bold;
+	font-size: 20px;	
+ }
+
+ .backButton:hover{
+ 	background-color: transparent;
+	border: 2px solid #66FCF1;	
+	color: #45A29E;
+	font-weight: bold;
+	font-size: 20px;	
+ }

@@ -13,6 +13,7 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import { setContext } from 'apollo-link-context';
 import HomePage from '../component/HomePage';
+import EditProfile from '../component/EditProfile';
 
 
 const httpLink = new HttpLink({
@@ -59,6 +60,7 @@ class App extends Component {
         <Router>
           <Switch>
             <PrivateRoute path="/ChatContainerALL" exact={true} component={ChatContainerALL} />
+              <Route path="/EditProfile" exact={true} component={EditProfile} />
             <Route path="/" exact={true} component={HomePage} />
             <Redirect to="/" />
           </Switch>

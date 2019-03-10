@@ -5,27 +5,28 @@ import messagesicon from './messagesicon.png';
 import sportsicon from './sportsicon.png';
 import techicon from './techicon.png';
 import travelicon from './travelicon.png';
-import PrivateMessages from './PrivateMessages';
 import logouticon from './logouticon.png';
+import mainchat from './mainchat.png';
 import '../ChatContainerALL.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
-import {PrivateRoute} from '../PrivateRoute';
-import EditProfile from '../EditProfile';
-import { withRouter } from 'react-router-dom';
+import {withRouter} from "react-router-dom";
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
-
-
+const logoutMutation = gql`
+  mutation logout($logged_token: String!) {
+    logout(logged_token: $logged_token)
+  }
+`;
 
 class Sidebar extends Component {
 	constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false,
       editProfile: false,
-      logout: false
+			logout: false,
     };
   }
 
@@ -39,45 +40,56 @@ class Sidebar extends Component {
   	this.setState({ editProfile: true }, () => this.props.history.push('/EditProfile'))
   }
 
-  handleLogout = () => {
+	handleLogout = async () => {
+		const logged_token = JSON.parse(localStorage.getItem('jwt'));
+		var logout_token = await this.props.mutate( {
+			variables: {
+				logged_token: logged_token.data.register || logged_token.data.login
+				}
+			}
+		)
+		localStorage.setItem('jwt', JSON.stringify(logout_token))
   	this.setState({ logout: true }, () => this.props.history.push('/'))
   }
 
-
-
 render() {
-	return(		
+	return(	
+	<>	
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
-				  <Button className="Buttoni" color="success" onClick={this.props.Hide}>
+				{ /* <Button className="Buttoni" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
-				  			PRIVATE MESSAGES
+				  			<span className='name-of-button-1'>PRIVATE MESSAGES</span>
+				  	</Button>*/}
+				  	<Button onClick={()=>this.props.ChangingRoom("1")} className="Buttoni">
+				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  />
+				  	<span className='name-of-button-1'>MAIN CHAT</span>
 				  	</Button>
-					<Button className="Buttoni" color="warning"><img className='imgbuttoni' alt='travel' src={travelicon}/>
-						TRAVEL
+					<Button  onClick={()=>this.props.ChangingRoom("2")} className="Buttoni" ><img className='imgbuttoni' alt='travel' src={travelicon} />
+						<span className='name-of-button'>{' '}TRAVEL</span>
 					</Button>
-				    <Button className="Buttoni" color="info"><img className='imgbuttoni' alt='sportsicon' src={sportsicon}/>
-				    	SPORT
+				    <Button onClick={()=>this.props.ChangingRoom("3")} className="Buttoni" ><img className='imgbuttoni' alt='sportsicon' src={sportsicon} />
+				    <span className='name-of-button'>SPORT</span>
 				    </Button>
-					<Button className="Buttoni" color="danger"><img className='imgbuttoni' alt='techicon' src={techicon}/>
-						TECH
+					<Button onClick={()=>this.props.ChangingRoom("4")} className="Buttoni" ><img className='imgbuttoni' alt='techicon' src={techicon}  />
+						<span className='name-of-button'>TECH</span>
 					</Button>
-					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" color="primary">
-						  <DropdownToggle caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
-						    SETTINGS
+					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni">
+						  <DropdownToggle className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
+						   <span className='name-of-button'>SETTINGS</span>
 						  </DropdownToggle>
-						  <DropdownMenu>
-						    <DropdownItem onClick={this.hnadleEditProfile} >Edit profile</DropdownItem>
+						  <DropdownMenu className='pop-out-button'>
+						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>
 						    <DropdownItem onClick={this.handleLogout}>LOGOUT</DropdownItem>
 						  </DropdownMenu>
 						</ButtonDropdown>
 				</ButtonGroup>
 			</div>
 	    </div>	
+	</>
 	);
 }
 }
-  
 
-export default withRouter(Sidebar);
+export default graphql(logoutMutation)(withRouter(Sidebar));

@@ -1,15 +1,15 @@
 
 #bc-login{
 	
-	padding-top: 3vh;
 	height:  40vh;
 	width: auto;
-	background-color: rgba(69, 162, 158, 0.8);  
-	display: flex;
-	justify-content: center;
-	margin-top: 10vh;
+	background-color: rgba(69, 162, 158, 0.8);  	
+	margin: 10vh;
 	font-weight: bold;
 	color: white;
+	justify-content: center;
+	display: flex;
+	align-items: center;
 	
 }
 #button{
@@ -29,4 +29,23 @@
 	color: white;
 	border: 2px solid #66FCF1;
 
+}
+
+#login{
+	background-color: transparent;
+	
+	border: 2px solid #45A29E;
+}
+
+#login:hover{
+	background-color: transparent;
+	
+	border: 2px solid #66FCF1;
+}
+.positionOfButtons{
+	justify-content: center;
+	display: flex;
+	width: 50%;
+	align-items: center;
+	margin: auto;
 }

@@ -1,11 +1,10 @@
 import React, { Component }  from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import {Form, Input, Button, Container} from 'reactstrap'; 
+import {Form, Input, Button, Container, ButtonGroup} from 'reactstrap'; 
 import './SendingMessages.css';
 import smileicon from './smileicon.png';
 import gificon from './gificon.png';
-import { setContext } from 'apollo-link-context';
 
 
 class SendingMessages extends Component {
@@ -13,31 +12,29 @@ class SendingMessages extends Component {
 		super(props);
 		this.state = {
 			text: "",
-			chatroomId: '1'
 			//UserId:
 		}
 	}
 
 	sendingMessage = async (e) => {	
-		console.log(this.state.text)	
-			const getToken = JSON.parse(localStorage.getItem('jwt'))
+		const getToken = JSON.parse(localStorage.getItem('jwt'))
 
-			const token = getToken.data.login || getToken.data.register
+		const token = getToken.data.login || getToken.data.register
 
-			await this.props.mutate({
-				variables: {
-					text: this.state.text, 
-					chatroomId: this.state.chatroomId,
-					token: token
-					}
-			});
-			this.setState({ text: "" })  // erasing content
+		await this.props.mutate({
+			variables: {
+				text: this.state.text, 
+				chatroomId: this.props.chatroomId,
+				token: token
+				}
+		});
+		this.setState({ text: "" })
 	}
 
 	handleKeyPress = async (e) => {
 		if(e.key === "Enter") {
 			this.sendingMessage()
-	}
+		}
 	}
 
 
@@ -59,17 +56,22 @@ class SendingMessages extends Component {
 						/>
 					</Form>					
 				</Container>
-				<Container className=" p-1 col-2" className= 'btn-all' /*id= 'btns'*/>
-					<Button id='btn1' 
+				<Container className=" p-1 col-2 btn-all">
+					<ButtonGroup vertical size="sm">
+					  <Button id='btn1' 
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
-					<Button className= 'btn-all' id ='btn2'
-						><img style={{height: 25, width: 25}} alt='smile' src={smileicon}/>
+
+					 {/* <Button className= 'btn-all' id ='btn2'
+						><img id='emoji-icon' alt='smile' src={smileicon}/>
+						
 					</Button>
-					<Button  className= 'btn-all' id= 'btn3'
-						><img style={{height: 25, width: 25}} alt='smile' src={gificon}/>
-					</Button>
+
+					  <Button  className= 'btn-all' id= 'btn3'
+						><img id='emoji-icon'  alt='smile' src={gificon}/>
+					</Button>*/}
+				 </ButtonGroup>
 
 				</Container>
 			</div>
@@ -84,7 +86,6 @@ const addMessageMutation= gql`
   mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
     addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
     	text
-
     }
   }
 `;

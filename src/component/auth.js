@@ -19,12 +19,12 @@ class Auth extends Component {            //pomocu ove komponente cemo provjerav
 			this.props.history.push('/Login')
 		}
 
-		axios.get('/getUser', { headers: Authorization: `Bearer ${jwt}` }).then(res => res.setState({ user: res.data  //getUser provjeriti u backendu routs
+		/*axios.get('/getUser', { headers: Authorization: `Bearer ${jwt}` }).then(res => res.setState({ user: res.data  //getUser provjeriti u backendu routs
 		})).catch(err => {
 			localStorage.removeItem('MP-jwt');
 			this.state.history.push('/Login');                   //razraditi error catch, ako je problem u serveru nema smisla pušati na login?
 		})
-	}
+	}*/
 
 	render() {
 		if(user === undefined){
