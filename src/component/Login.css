@@ -1,6 +1,5 @@
 
-#bc-login{
-	
+#bc-login{	
 	height:  40vh;
 	width: auto;
 	background-color: rgba(69, 162, 158, 0.8);  	
@@ -32,14 +31,12 @@
 }
 
 #login{
-	background-color: transparent;
-	
+	background-color: transparent;	
 	border: 2px solid #45A29E;
 }
 
 #login:hover{
-	background-color: transparent;
-	
+	background-color: transparent;	
 	border: 2px solid #66FCF1;
 }
 .positionOfButtons{

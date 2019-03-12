@@ -20,6 +20,7 @@
     "react-bootstrap": "^1.0.0-beta.5",
     "react-bootstrap-sidebar": "0.0.1",
     "react-dom": "^16.8.2",
+    "react-hover-image": "^1.0.0",
     "react-particles-js": "^2.4.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

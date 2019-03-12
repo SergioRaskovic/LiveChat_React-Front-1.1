@@ -9,7 +9,7 @@ class ChatContainer extends Component {
 	render() {
 		return(
 			<div className="d-flex" >
-				<Container >
+				<Container  >
 					<div className="text-list " >
 						<MessageList/>
 					</div>

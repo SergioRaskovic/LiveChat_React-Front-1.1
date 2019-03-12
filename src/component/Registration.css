@@ -14,14 +14,12 @@
 	color: white;
 	justify-content: center;
 	display: flex;
-	align-items: center;
-	/*border-radius: 10%;*/
+	align-items: center;	
 }
 
 #button{
 	background-color: transparent;
-	border: 2px solid #1F2833;
-	
+	border: 2px solid #1F2833;	
 	color: white;
 	font-weight: bold;
 	font-size: 20px;

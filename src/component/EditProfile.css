@@ -2,50 +2,84 @@
 
 #formShape{
 	padding-top: 5vh;
-	height:  70vh;
+	height:  100vh;
 	width: auto;
-	background-color: rgba(69, 162, 158, 0.8);
+	background-color: transparent;
 	display: flex;
 	justify-content: center;
-	margin-top: 10vh;
+	font-family: 'Encode Sans Semi Expanded', sans-serif;
 	font-weight: bold;
 	color: white;
 	margin-left: auto;
     margin-right: auto;
-	/*border-radius: 10%;*/
+    padding-top: 150px;
 }
 
 #button{
 	background-color: transparent;
-	border: 2px solid #1F2833;
-	
-	color: white;
+	border: transparent!important;
+	color: #66FCF1;
 	font-weight: bold;
 	font-size: 20px;
 	display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin: auto;
-	
+    font-family: 'Montserrat Subrayada', sans-serif;	
 }
+
 #button:hover {
-	background-color: #1F2833;
+	background-color: transparent;
 	color: #66FCF1;
 	border: 2px solid #66FCF1;
-
 }
+
  .backButton{
  	background-color: transparent;
-	border: 2px solid #45A29E;	
+	border: transparent!important;
 	color: #66FCF1;
 	font-weight: bold;
 	font-size: 20px;	
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+   font-family: 'Montserrat Subrayada', sans-serif;
  }
 
  .backButton:hover{
- 	background-color: transparent;
-	border: 2px solid #66FCF1;	
+ 	background: transparent!important;
 	color: #45A29E;
+	border: transparent!important;
 	font-weight: bold;
 	font-size: 20px;	
  }
+
+
+ #photo{
+ 	display: flex;
+ }
+ .infoEdit{
+ 	justify-content: center;
+ 	font-size: 25px;
+ 	color: #45A29E;
+ 	font-family: 'Montserrat Subrayada', sans-serif;
+ 
+ }
+
+ @media screen and (max-width: 450px) {
+
+  
+    .backButton{
+    	font-size: 14px;
+    }
+    #formShape{
+    	width: 100%;
+    	justify-content: center;
+    	display: flex;
+    	width: auto;
+    }
+
+}

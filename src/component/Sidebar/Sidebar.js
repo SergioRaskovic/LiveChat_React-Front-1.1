@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './Sidebar.css';
 import { Button, ButtonGroup } from 'reactstrap';
 import messagesicon from './messagesicon.png';
 import sportsicon from './sportsicon.png';
@@ -58,26 +57,23 @@ render() {
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
-				{ /* <Button className="Buttoni" onClick={this.props.Hide}>
-				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
-				  			<span className='name-of-button-1'>PRIVATE MESSAGES</span>
-				  	</Button>*/}
-				  	<Button onClick={()=>this.props.ChangingRoom("1")} className="Buttoni">
-				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  />
-				  	<span className='name-of-button-1'>MAIN CHAT</span>
+					<Button className="Buttoni" id='button1' onClick={this.props.Hide}>
+				  		<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>				  			
 				  	</Button>
-					<Button  onClick={()=>this.props.ChangingRoom("2")} className="Buttoni" ><img className='imgbuttoni' alt='travel' src={travelicon} />
-						<span className='name-of-button'>{' '}TRAVEL</span>
+				  	<Button onClick={()=>this.props.ChangingRoom("1")} className="Buttoni" id='button2'>
+				  		<img className='imgbuttoni' alt='mainchat' src={mainchat}  />				  
+				  	</Button>
+					<Button  onClick={()=>this.props.ChangingRoom("2")} className="Buttoni" id='button3' >
+						<img className='imgbuttoni' alt='travel' src={travelicon} />						
 					</Button>
-				    <Button onClick={()=>this.props.ChangingRoom("3")} className="Buttoni" ><img className='imgbuttoni' alt='sportsicon' src={sportsicon} />
-				    <span className='name-of-button'>SPORT</span>
+				    <Button onClick={()=>this.props.ChangingRoom("3")} className="Buttoni" id='button4'>
+				    	<img className='imgbuttoni' alt='sportsicon' src={sportsicon} />				    
 				    </Button>
-					<Button onClick={()=>this.props.ChangingRoom("4")} className="Buttoni" ><img className='imgbuttoni' alt='techicon' src={techicon}  />
-						<span className='name-of-button'>TECH</span>
+					<Button onClick={()=>this.props.ChangingRoom("4")} className="Buttoni" id='button5' >
+						<img className='imgbuttoni' alt='techicon' src={techicon}  />						
 					</Button>
-					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni">
-						  <DropdownToggle className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
-						   <span className='name-of-button'>SETTINGS</span>
+					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" >
+						  <DropdownToggle id='button6' className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>						  
 						  </DropdownToggle>
 						  <DropdownMenu className='pop-out-button'>
 						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>

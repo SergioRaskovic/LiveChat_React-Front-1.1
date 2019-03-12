@@ -1,10 +1,6 @@
-.wrapper{
-  
+.wrapper{  
   display: flex;  
- /* flex-flow: flex wrap;*/
-  font-weight: bold;
-  /*text-align: left;*/
-  
+  font-weight: bold;  
 }
 .wrapper > * {
   flex: 1 100%;
@@ -14,25 +10,24 @@
   flex-direction: row;
   display: flex;
   min-width: 1;
-  flex: 0.3;
+  flex: 0.2;
 }
 .aside-1 {
   background: #1F2833;
   height: 100vh;
   border: solid 1px #45A29E;
-  color: white;
-  
+  color: white;  
 }
 
-/*.aside-2 {
-  background: #1F2833;
-  border: solid 1px #45A29E;
+.aside-2 {
+  background: #0B0C10;
+  border: solid 2px #48F1E5;
   height: 100vh;
   width: 300px;
  padding-left: 10px;
  color: white;
 
-}*/
+}
 .columns{
   flex-direction: column;
   display: flex;  
@@ -41,81 +36,124 @@
 .container1 {
     background: #0B0C10;
     height: 70vh;
-    border: solid 2px #45A29E;   
+    border: solid 1px #45A29E;
+    overflow-y: auto;  
 }
-
-
 .container2{
   background: #0B0C10 ;
   height: 30vh;
   border: solid 1px #45A29E;
 }
-
-/*#button1{
-  background: #45A29E;
-  border: solid 2px #66FCF1;
-}*/
-#button1:hover{
-  background: #66FCF1;
+#pm{
+  color: #45A29E;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
 }
-/*#button2{
-  background: #45A29E;
-  border: solid 1px #66FCF1;
+#button1{
+  background: #96FCA9;
+ 
+}
+#button1:hover{
+  background: #6BF884;
+}
+#button1:focus{
+  background: #44EE62;
+}
+#button2{
+  background:#69F8CA;  
+}
+#button2:hover{
+  background:#41F2B8;  
+}
+#button2:focus{
+  background:#1BE4A2;  
 }
 #button3{
-  background: #45A29E;
-  border: solid 2px #66FCF1;
+  background:#48F1E5; 
+}
+#button3:hover{
+ background:  #21E9DA;
+ border: solid 2px #21E9DA;
+}
+#button3:focus{
+  background:  #00D9C9;
 }
 #button4{
-  background: #45A29E;
-  border: solid 2px #66FCF1;
-}*/
+  background: #4CE7F8;
+ 
+}
+#button4:hover{
+  background:  #23E1F3;
+   border: solid 2px #23E1F3;
+}
+#button4:focus{
+  background:  #02D3E6;
+}  
+#button5{
+  background: #58A7F5;
+} 
+#button5:hover{
+  background:  #3393EF;
+   border: solid 2px #3393EF;
+}
+#button5:focus{
+  background:  #0F7AE1;
+} 
+#button6{
+  color: black;
+  background: #8981D7;
+}  
+#button6:hover{
+  background: #645DBF;
+}  
+#button6:focus{
+  background: #483FA6;
+}  
 
-   .Buttoni {
-     color:black;
-     height: 20vh;
-     background: #45A29E;
-      border-bottom:solid 1px #66FCF1;
-    }
+.Buttoni {     
+ height: 16.7vh;
+ /*background: #45A29E;
+  border-bottom:solid 1px #66FCF1;*/
+}  
+.users{
+  background: transparent;
+  border-color: transparent;      
+}
+.users:hover{
+  background: transparent;
+  border-color: transparent;  
+}
+ 
+.imgbuttoni{
+  width: 100px;
+  height: 100px;  
+}
+.pop-out-button{
+  background: #645DBF;
+  font-weight: bold;
+}
+.name-of-button{
+ margin-right: 5px;
+  color: black;
+  font-weight: bold;    
+  font-size: 15px; 
 
-    .Buttoni:hover{
-      color: black;
-      background: #66FCF1;
-    }
+}
+.name-of-button-1{
+  display: block;
+   color: black;
+  font-weight: bold;    
+  font-size: 15px;    
+}
 
-    .Buttoni:focus{
-      background: #66FCF1;
-    }
-  .imgbuttoni{
-    width: 90px;
-    height: 90px;  
-  }
-  .pop-out-button{
-    background: #45A29E;
-    
-  }
-  .name-of-button{
-   margin-right: 5px;
-    color: black;
-    font-weight: bold;    
-    font-size: 15px; 
-
-  }
-  .name-of-button-1{
-    display: block;
-     color: black;
-    font-weight: bold;    
-    font-size: 15px;    
-  }
-
-  .aside-1 { flex: 0.5 0 0; }
- /* .aside-2 { flex: 1.2 0 0; }*/
+.aside-1 { flex: 0.5 0 0; }
+ .aside-2 { flex: 1.2 0 0; }
 
 .container1    { flex: 2 0px; }
   .aside-1 { order: 1; } 
-  /*.aside-2   { order: 2; }*/
-  .container1 { order: 2; }
-  .container2 { order: 3; }
+  .aside-2   { order: 2; }
+  .container1 { order: 3; }
+  .container2 { order: 4; }
 
 @media screen and (max-width: 450px) {
    .Buttoni {
@@ -128,20 +166,24 @@
     height: 40px;
   }
 
-  .aside-1 {  height: 100vh; }
- /* .aside-2 {  height: 100vh; }*/
+  .aside-1 { 
+    height: 100vh;
+    flex: 0.1;
+    }
+  .aside-2 { 
+    height: 100vh; 
+     flex: 1;
+  }
 
   .container1 { 
-    height: 70vh;
-    width: 100%;
+    height: 70vh;    
+    flex: 1;
   }
   .container2 { 
-    height: 30vh;
-    width: 100%;
+    height: 30vh;   
    }
 }
 
 .text-list {
   margin-left: 5px!important;
-
 }

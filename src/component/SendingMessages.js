@@ -43,7 +43,7 @@ class SendingMessages extends Component {
 	render() {
 		return(
 			<div className="d-flex">
-				<Container className="p-2 m col-10">
+				<Container className="p-3 m col-10">
 					<Form>
 						<Input
 							type="textarea"
@@ -64,15 +64,6 @@ class SendingMessages extends Component {
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
-
-					 {/* <Button className= 'btn-all' id ='btn2'
-						><img id='emoji-icon' alt='smile' src={smileicon}/>
-						
-					</Button>
-
-					  <Button  className= 'btn-all' id= 'btn3'
-						><img id='emoji-icon'  alt='smile' src={gificon}/>
-					</Button>*/}
 				 </ButtonGroup>
 
 				</Container>

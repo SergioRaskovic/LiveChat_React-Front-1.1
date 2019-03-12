@@ -2,16 +2,36 @@
 	list-style-type: none;
 	display: flex;
 	text-align: left;
+	background: transparent;
+	border-color: transparent;	
 }
 
 .userName {
-	color: #45A29E;
 	text-transform: uppercase;
+	font-family: 'Permanent Marker', cursive;
+	font-weight: bold;
+	color: #45A29E;	
+	padding-left:  5px;
 }
 
+ .userName:hover{
+      color: #66FCF1;
+    }
+
 .messages{
-	color: white;
+	color: #C5C6C7;
+	font-family: 'Roboto', sans-serif;
+	flex-direction: column;
+	flex: 1;
+	width: 0;
+	overflow-wrap: break-word;	
 }
 .spaceBetween{
 	color: transparent;
+}
+.createdAt{
+ 	font-size: 12px;
+ 	padding: 5px;
+ 	color: #1F2833;
+ 	font-family: 'Roboto', sans-serif;
 }

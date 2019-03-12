@@ -11,7 +11,10 @@ import '../Login.css';
 
 const validToken = gql`
   mutation validToken($token: String!) {
-    validToken(token : $token)
+    validToken(token : $token){
+      response
+      id
+    }
   }
 `;
 
@@ -51,7 +54,7 @@ class HomePage extends Component {
         token: token.data.register || token.data.login || token.data.logout
         }
       });
-      if(response.data.validToken === "True"){
+      if(response.data.validToken.response === "True"){
           this.handleTriger();
       }
       else {

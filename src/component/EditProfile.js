@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
 import Particles from 'react-particles-js';
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button, Container, Row, Col } from 'reactstrap';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import './EditProfile.css';
 import gificon from './gificon.png';
+import img1 from './img1.png';
+import img2 from './img2.png';
+import HoverImage from "react-hover-image";
+
 
 class EditProfile extends Component {
   constructor(props){
@@ -19,7 +23,8 @@ class EditProfile extends Component {
       usernameValid: "",
       newUsernameValid: "",
       passwordValid: "",
-      newPasswordValid: ""
+      newPasswordValid: "",
+      
     }
   }
 
@@ -29,6 +34,7 @@ class EditProfile extends Component {
 
 handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
+
   };
 
   checkValid = () => {
@@ -95,6 +101,7 @@ handleChange = (e) => {
     }
 }
 
+
   render(){
   const particleOptions= {
       particles: {
@@ -112,15 +119,30 @@ handleChange = (e) => {
         },
       },
     };
+
     
   return(
     <>
        <Particles className='particles' params={particleOptions} />
-       
-      <Button className='backButton' onClick={this.handleGoBack}>BACK</Button>
-      <div className=" col-md-4   " id='formShape'>
+       <Container>
+       <Row className='row'>
+          <Col className='first col-xs-6 hidden-xs-down' >  
+              <div className='changingImage'>        
+               <HoverImage
+                style={{width: '500px', height: '500px',marginTop:'8vh', marginLeft: '-4vh', display: 'flex'}}                  
+                  src={img1}
+                  hoverSrc={img2}
+                  id='photo'
+                />    
+                </div>   
+
+                 
+          </Col>
+          <Col className='second col-xs-6'>
+          <div className=" col-md-9   " id='formShape'>
             <Form onSubmit={e => this.handleSubmit(e)} >
                 <FormGroup>
+                  <p className='infoEdit'>EDIT YOUR INFO</p>
                   <Label className= 'white' htmlFor="username">Username</Label>
                   <Input 
                   type="text" 
@@ -170,9 +192,15 @@ handleChange = (e) => {
                   name="submit" 
                   id="button"                   
                   >Submit</Button>
+                 <Button className='backButton' onClick={this.handleGoBack}>BACK</Button>
             </Form>
 
           </div>
+          </Col>
+        </Row>
+        </Container>
+      
+      
     </>
     )
   }
